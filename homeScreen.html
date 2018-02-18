@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<script src="angular.min.js"></script>
+<style>
+	.homeContainer{
+		height: 127px;
+		background: black;
+		color: white;
+	}
+	header.homeHeader{
+		height: 127px;
+		width: 30%;
+		line-height: 127px;
+		float: left;
+		font-size: 24px;
+		padding-left: 5px;
+		font-family: Georgia, serif;
+	}
+	header.homeHeader::first-letter{
+		font-size:35px;
+	}
+</style>
+<div class="homeContainer" ng-app="schoolHomePage" ng-controller="schoolHomeController" ng-init="schoolName=">
+<div class="containerHeader">
+	<header class="homeHeader" ng-bind="schoolName"></header>
+	<nav>
+		<a>Home</a>
+		<a>About Us</a>
+		<a>Faculty</a>
+		<a>Academics</a>
+		<a>Extra Curricular</a>
+		<a>Functions</a>
+		<a>Career</a>
+	</nav>
+</div>
+<div>
+<script>
+	var app = angular.module("schoolHomePage",[])
+	app.controller("schoolHomeController",function($scope){
+		$scope.schoolName='Marks Public School';
+	})
+	/*    
+	
+	
+	
+	
+	    */
+</script>
+</html>
