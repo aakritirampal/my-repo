@@ -1,48 +1,149 @@
 <!DOCTYPE html>
 <script src="angular.min.js"></script>
+<link rel="stylesheet" href="bootstrap.min.css"></link>
+<link href="animate.min.css" rel="stylesheet"></link>
+<link href="bootstrap-dropdownhover.min.css" rel="stylesheet"></link>
+<script src="bootstrap-dropdownhover.min.js"></script>
 <style>
-	.homeContainer{
+	.containerHeader{
 		height: 127px;
+		width: 100%;
 		background: black;
 		color: white;
+		position: relative;
 	}
 	header.homeHeader{
 		height: 127px;
 		width: 30%;
 		line-height: 127px;
 		float: left;
-		font-size: 24px;
+		font-size: 35px;
 		padding-left: 5px;
 		font-family: Georgia, serif;
 	}
 	header.homeHeader::first-letter{
-		font-size:35px;
+		font-size:50px;
+	}
+	nav.navHeader{
+	    width: 54%;
+		height: 42px;
+		float: left;
+		position: absolute;
+		bottom: 24px;
+		right: 0px;
+	}
+	.homeNav{
+		padding: 3px;
+	}
+	.navUnderline{
+		width: 80%;
+		height: 3px;
+		position: absolute;
+		bottom: -13px;
+		left: 5%;
+	}
+	.navSelected{
+		background: white;
+		cursor: pointer;
+	}
+	.navDiv{
+		position: relative;
+	}
+	.cursorPointer{
+		cursor: pointer;
+	}
+	.dropDownDiv{
+		border: 1px solid gainsboro;
+	}
+	.dropDownDiv {
+		border: 1px solid gainsboro;
+		position: absolute;
+		bottom: -122px;
+		left: 0px;
+		width: 100%;
+		height: 78px;
+		border-radius: 5px;
+		transition: all .3s ease-out;
+		text-align: center;
+		background: black;
+		display: none;
+	}
+	.navDiv:hover > .dropDownDiv{
+		display: block;
+	}
+	.navDiv:hover > .navUnderline{
+		background: white;
+	}
+	.dropDown{
+		color: white;
+		background: black;
+		
+	}
+	.marqueeDiv{
+		background: #666;
+		color: white;
 	}
 </style>
-<div class="homeContainer" ng-app="schoolHomePage" ng-controller="schoolHomeController" ng-init="schoolName=">
+<div class="homeContainer" ng-app="schoolHomePage" ng-controller="schoolHomeController" ng-init="selected='home'">
 <div class="containerHeader">
 	<header class="homeHeader" ng-bind="schoolName"></header>
-	<nav>
-		<a>Home</a>
-		<a>About Us</a>
-		<a>Faculty</a>
-		<a>Academics</a>
-		<a>Extra Curricular</a>
-		<a>Functions</a>
-		<a>Career</a>
+	<nav class="navHeader">
+		<span class='navDiv' ng-click='selected="home"' ng-mouseover='hovered="hover"' ng-class='{cursorPointer: hovered=="hover"}'>
+			<a class='homeNav'>HOME</a>
+			<span class='navUnderline' ng-class='{navSelected: selected=="home"}'> </span>
+		</span>
+		<span class='navDiv' ng-click='selected="aboutUs"' ng-mouseover='hovered="hover"' ng-class='{cursorPointer: hovered=="hover"}'>
+			<a class='homeNav'>ABOUT US</a>
+			<span class='navUnderline' ng-class='{navSelected: selected=="aboutUs"}'> </span>
+		</span>
+		<span class='navDiv' ng-click='selected="faculty"' ng-mouseover='hovered="hover"' ng-class='{cursorPointer: hovered=="hover"}'>
+			<a class='homeNav'>FACILITIES</a>
+			<span class='navUnderline' ng-class='{navSelected: selected=="faculty"}'> </span>
+			<span class="dropDownDiv">
+				<div class="dropDown"> Item1 </div>
+				<div class="dropDown"> Item2 </div>
+				<div class="dropDown"> Item3 </div>
+			</span>
+		</span>
+		<span class='navDiv' ng-click='selected="academics"' ng-mouseover='hovered="hover"' ng-class='{cursorPointer: hovered=="hover"}'>
+			<a class='homeNav'>ACADEMIS</a>
+			<span class='navUnderline' ng-class='{navSelected: selected=="academics"}'> </span>
+			<span class="dropDownDiv">
+				<div class="dropDown"> Item1 </div>
+				<div class="dropDown"> Item2 </div>
+				<div class="dropDown"> Item3 </div>
+			</span>
+		</span>
+		<span class='navDiv' ng-click='selected="extraCurricular"' ng-mouseover='hovered="hover"' ng-class='{cursorPointer: hovered=="hover"}'>
+			<a class='homeNav'>EXTRA-CURICCULAR</a>
+			<span class='navUnderline' ng-class='{navSelected: selected=="extraCurricular"}'> </span>
+			<span class="dropDownDiv">
+				<div class="dropDown"> Item1 </div>
+				<div class="dropDown"> Item2 </div>
+				<div class="dropDown"> Item3 </div>
+			</span>
+		</span>
+		<span class='navDiv' ng-click='selected="events"' ng-mouseover='hovered="hover"' ng-class='{cursorPointer: hovered=="hover"}'>
+			<a class='homeNav'>EVENTS</a>
+			<span class='navUnderline' ng-class='{navSelected: selected=="events"}'> </span>
+			<span class="dropDownDiv">
+				<div class="dropDown"> Item1 </div>
+				<div class="dropDown"> Item2 </div>
+				<div class="dropDown"> Item3 </div>
+			</span>
+		</span>
+		<span class='navDiv' ng-click='selected="career"' ng-mouseover='hovered="hover"' ng-class='{cursorPointer: hovered=="hover"}'>
+			<a class='homeNav'>CAREER</a>
+			<span class='navUnderline' ng-class='{navSelected: selected=="career"}'> </span>
+		</span>
 	</nav>
 </div>
-<div>
+<marquee class='marqueeDiv' behavior="scroll" direction="left">Established in: 1990 | Board: CBSE | Medium: English | Grade: 1-12 | School Type: Co-Ed | Address: 786 A Pocket 2 Meera Bagh Paschim Vihar | Branches: Paschim Vihar , Janakpuri, Pitampura | Contact Info: 01123456789, 011254783673</marquee>
+</div>
 <script>
 	var app = angular.module("schoolHomePage",[])
 	app.controller("schoolHomeController",function($scope){
-		$scope.schoolName='Marks Public School';
+		$scope.schoolName="Mark's Public School";
 	})
-	/*    
-	
-	
-	
-	
-	    */
 </script>
 </html>
